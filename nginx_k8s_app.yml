@@ -25,6 +25,6 @@ spec:
     app: nginx-app
   ports:
     - name: http
-      nodePort: 33000
+      nodePort: 31000
       port: 8090
       targetPort: 80
