@@ -10,7 +10,7 @@ docker tag nginx_app_img ratanmd/nginx_app_img:v1
 echo "===========================Pushing tagged image into registry=========================================="
 docker push ratanmd/nginx_app_img:v1
 echo "===========================Pruning dangling images=========================================="
-docker image prune
+docker image prune -y
 read -p 'Run container? (y/n) :' run_cont
 
 if [ $run_cont == "y" ];then
@@ -18,7 +18,7 @@ if [ $run_cont == "y" ];then
     docker rm -f $(docker stop nginx_app_cont)
     echo "===================================Running new container==============================================="
     docker run -itd --name nginx_app_cont -p 8090:80 nginx_app_img
-    echo -e "\n\nImage built and container should be running at $(curl http://checkip.amazonaws.com):8090\n\n"
+    echo -e "\n\nImage built and container should be running at http://$(curl http://checkip.amazonaws.com):8090\n\n"
 
 elif [ $run_cont == "n" ];then
     echo -e "\n\nImage built and pushed into registry. You have chosen not to run the container.\n\n"
