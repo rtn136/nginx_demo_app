@@ -13,14 +13,14 @@ echo "==================================Pruning dangling images=================
 docker image prune -f
 read -p 'Run container? (y/n) :' run_cont
 
-if [ $run_cont == "y" ];then
+if [ $run_cont == "y" ] || [ $run_cont == "Y" ];then
     echo "===================================Removing existing container========================================="
     docker rm -f $(docker stop nginx_app_cont)
     echo "===================================Running new container==============================================="
     docker run -itd --name nginx_app_cont -p 8090:80 nginx_app_img
     echo -e "\n\nImage built and container should be running at http://$(curl http://checkip.amazonaws.com):8090\n\n"
 
-elif [ $run_cont == "n" ];then
+elif [ $run_cont == "n" ] || [ $run_cont == "N" ];then
     echo -e "\n\nImage built and pushed into registry. You have chosen not to run the container.\n\n"
 
 else
