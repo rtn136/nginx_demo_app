@@ -9,6 +9,4 @@ echo "Removing existing container..."
 docker rm $(docker stop nginx_app_cont)
 echo "Running new container..."
 docker run -itd --name nginx_app_cont -p 8090:80 nginx_app_img
-echo "Image built and container is running at $(curl http://checkip.amazonaws.com):8090"
-
-
+echo "Image built and container should be running at $(curl http://checkip.amazonaws.com):8090"
