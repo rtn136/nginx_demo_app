@@ -6,7 +6,7 @@ metadata:
     app: nginx-app
 spec:
   containers:
-    - name: nginx_app_cont
+    - name: nginx-app-cont
       image: ratanmd/nginx_app_img:v1
       ports:
         - containerPort: 80
