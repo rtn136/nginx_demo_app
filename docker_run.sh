@@ -10,7 +10,7 @@ docker tag nginx_app_img ratanmd/nginx_app_img:v1
 echo "===========================Pushing tagged image into registry=========================================="
 docker push ratanmd/nginx_app_img:v1
 echo "===========================Pruning dangling images=========================================="
-docker image prune -y
+docker image prune -f
 read -p 'Run container? (y/n) :' run_cont
 
 if [ $run_cont == "y" ];then
